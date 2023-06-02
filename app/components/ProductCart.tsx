@@ -9,7 +9,7 @@ const ProductCart:FC<{ProductData:Array<oneProductType>}> = ({ProductData}:any) 
   return (
     <div>
       {ProductData.map((index:number,item:oneProductType)=>(
-        <Card singelProductData={item}/>
+        <Card  key={index} singelProductData={item}/>
 
       ))}
     </div>

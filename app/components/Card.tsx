@@ -12,7 +12,7 @@ const Card:FC<{singelProductData:oneProductType}> = (singelProductData) => {
 function urlFor(source: any) {
   return builder.image(source)
 }
-console.log(urlFor(singelProductData.image[0]).width(500).url())
+//console.log(urlFor(singelProductData.image[0]).width(500).url())
   return (
     <div>Card</div>
   )
