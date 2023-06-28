@@ -1,7 +1,7 @@
-export default {
-    name: 'products',
+export const testing ={
+    name: 'testing',
     type: 'document',
-    title: 'Products',
+    title: 'Testing',
     fields: [
         {
             name: 'productName',
@@ -32,28 +32,19 @@ export default {
             ]
         },
         {
-            name: 'image',
-            type: 'array',
-            title: 'Image',
-            of: [
-                {
-                    type: 'image',
-                    fields: [
-                        {
-                            name: "alt",
-                            type: "text",
-                            title: "Alternative text",
-                        }
-                    ]
-                }
-            ]
+            name: "image",
+            title: "Product Image",
+            type: "image",
+           
         },
+        
         {
             name: 'productTypes',
             type: 'array',
             title: 'ProductType',
             of: [{ type: 'string' }]
         },
+
         {
             name: 'price',
             type: 'number',
@@ -70,5 +61,7 @@ export default {
             type: 'number',
             title: 'Quantity'
         },
+           
+
     ]
 }

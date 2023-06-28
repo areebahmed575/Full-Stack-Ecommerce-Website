@@ -1,28 +1,90 @@
 import Image from 'next/image'
 import Hero from './components/Hero'
-import Product from './components/Product'
-import BASE_PATH_FORAPI from './components/Basepath'
-import ProductCart from './components/ProductCart'
+import ProductText from './components/ProductText'
+//import ProductCart from './components/ProductCart'
+import { client } from '@/lib/sanityClient';
+//import { oneProductType, responseType } from './components/ProductArrayType/Type';
+import { urlForImage } from '@/sanity/lib/image';
+import { Image as Iimage } from 'sanity';
+import Link from 'next/link';
+import Jwellery from './components/Jwellery';
+import Card from './components/Card';
+import Newsletter from './components/Newsletter';
+import Footer from './components/Footer';
+//import Productapidata from './components/Productcomponent/Productapidata';
 
-//SSR
-async function fetchProduct(){
-  const res=await fetch(`${BASE_PATH_FORAPI}/api/products`)
-  if(!res.ok){
-    throw new Error("Failed to fetch")
-  }
-  return res.json()
+async function fetchProduct() {
+  const res = await client.fetch(`*[_type == "testing"]{
+    productName,
+    price,
+    slug,
+    quantity,
+    image,
+    description,
+    size
+
+  }`);
+
+  return res
 }
 
-export default async  function Home() {
-const {response}=await fetchProduct();
-//console.log("response:",response) 
+interface assetImageType {
+  _type: string,
+  _ref: string,
+};
+export interface imagesType {
+  asset: assetImageType,
+  _type: string,
+  alt: string,
+  _key: string,
+};
+export interface IProduct {
+  slug: any,
+  quantity: number,
+  _rev: string,
+  _type: string,
+  productName: string,
+  _createdAt: string,
+  _id: string,
+  _updatedAt: string,
+  description: any,
+  productTypes: Array<string>,
+  size: Array<string>,
+  price: number,
+  image: Iimage,
+
+};
+export interface responseType {
+  result: Array<IProduct>
+}
+export default async function Home() {
+  let result: IProduct[] = await fetchProduct();
+  //console.log(result)
+
+
   return (
     <div>
+
       <Hero />
-      <Product/>
-      <ProductCart ProductData={response}/>
-      
-      
+      <ProductText />
+      <Card data={result} />
+      <Jwellery />
+      <Newsletter />
+
+
+
     </div>
+
+
   )
 }
+{/*    
+      
+         <ProductCart ProductData={result} />
+          
+     flex justify-center gap-x-10
+     npm i react-slick
+<Link href={`/catalog/${item.slug.current}`}>
+ </Link >
+ <Jwellery />
+*/}

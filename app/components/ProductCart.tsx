@@ -1,15 +1,17 @@
 "use client"
 import React from 'react'
-import {FC} from 'react'
-import { oneProductType } from './ProductArrayType/Type'
+import { FC } from 'react'
+import { IProduct } from '../page'
 import Card from './Card'
+import CardAll from './CardAll'
 
-const ProductCart:FC<{ProductData:Array<oneProductType>}> = ({ProductData}:any) => {
-    //console.log(ProductData)
+//console.log(ProductData)
+const ProductCart: FC<{ ProductData: Array<IProduct> }> = ({ ProductData }: any) => {
+
   return (
     <div>
-      {ProductData.map((index:number,item:oneProductType)=>(
-        <Card  key={index} singelProductData={item}/>
+      {ProductData.map((index: number, item: IProduct) => (
+        <CardAll key={index} singleProductData={item} />
 
       ))}
     </div>

@@ -1,17 +1,23 @@
-import { NextResponse } from "next/server"
-import { createClient } from "next-sanity"
-import { SanityClient } from "sanity"
-import { client } from "@/sanity/lib/client";
+import { IProduct } from '@/app/IProduct';
+import { NextRequest, NextResponse } from "next/server";
 
 
-export async function GET() {
-    try {
-        let response =await client.fetch(`*[_type == "products"]`);
-        //console.log(response)
-        return  NextResponse.json({ response})
+export async function GET(request: NextRequest) {
+    const orignalData: Array<IProduct> = [];
+    const url = request.nextUrl.searchParams;
+
+    let res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2023-06-08/data/query/production?query=*[_type == "testing"]`);
+    let dataFrom_APi = await res.json();
+    orignalData.push(...dataFrom_APi.result)
+
+    if (url.has("start") || url.has("end")) {
+        if (orignalData[Number(url.get("start"))]) {
+            let productArray = orignalData.slice(Number(url.get("start")), Number(url.get("end")))
+            return NextResponse.json({ productArray })
+        }
+        return NextResponse.json({ productArray: "Not found" })
+
     }
-    catch (error) {
-        console.log((error as { message: string }).message)
-        return NextResponse.json({ "Error": error })
-    }
-}      
+
+    return NextResponse.json({ orignalData })
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-const Product = () => {
+const ProductText = () => {
   return (
     <div className='py-16 px-2 space-y-5'>
     <div className='text-center space-y-3'>
@@ -63,4 +63,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default ProductText

@@ -1,3 +1,4 @@
+{/* 
 export interface slugType {
     _type: string,
     current: string,
@@ -34,3 +35,4 @@ export interface oneProductType {
 export interface responseType {
     result: Array<oneProductType>
 }
+*/}
