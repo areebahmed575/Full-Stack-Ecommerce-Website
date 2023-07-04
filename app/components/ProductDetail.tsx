@@ -79,8 +79,8 @@ const ProductDetail: FC<{ item: Array<IProduct> }> = ({ item }) => {
       <Toaster />
       {item.map((item, index: number) => (
 
-        <div>
-          <div key={index} className='flex sm:gap-x-4 md:gap-x-8'>
+        <div key={index}>
+          <div className='flex sm:gap-x-4 md:gap-x-8'>
 
             <div className='w-16 md:w-24'>
 
