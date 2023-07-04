@@ -16,7 +16,10 @@ const page = async () => {
     return (
 
 
-        <CartComp allProductsOfStore={allProducts.result} />
+
+        <ContextWrapper>
+            <CartComp allProductsOfStore={allProducts.result} />
+        </ContextWrapper>
 
 
 

@@ -1,4 +1,4 @@
-import { IProduct } from '@/app/IProduct';
+import { IProduct } from "@/app/page";
 import { NextRequest, NextResponse } from "next/server";
 
 

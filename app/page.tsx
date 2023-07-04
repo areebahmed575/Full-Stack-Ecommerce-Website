@@ -64,12 +64,14 @@ export default async function Home() {
 
   return (
     <div>
+      {/*    
 
       <Hero />
       <ProductText />
       <Card data={result} />
       <Jwellery />
       <Newsletter />
+      */}
 
 
 
@@ -78,13 +80,3 @@ export default async function Home() {
 
   )
 }
-{/*    
-      
-         <ProductCart ProductData={result} />
-          
-     flex justify-center gap-x-10
-     npm i react-slick
-<Link href={`/catalog/${item.slug.current}`}>
- </Link >
- <Jwellery />
-*/}

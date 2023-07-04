@@ -11,10 +11,14 @@ import toast, { Toaster } from 'react-hot-toast'
 
 
 const ProductDetail: FC<{ item: Array<IProduct> }> = ({ item }) => {
-  let { state, dispatch } = useContext(carContext)
+  let { cartArray, userData, dispatch } = useContext(carContext)
 
   const [onClickImage, setClickImage] = useState<string>()
   const [quantity, setQuantity] = useState(1);
+  let productPrice = item.map((item) => (
+    item.price
+
+  ))
 
   let productIdCart = item.map((item) => (
     item._id
@@ -41,27 +45,42 @@ const ProductDetail: FC<{ item: Array<IProduct> }> = ({ item }) => {
     })
   };
 
+  const notificationError = (title: string) => {
+    toast(title, {
+      position: "top-right"
+    })
+  };
+
 
 
 
   function handleAddToCart() {
-    let dataAddToCart = {
-      productId: productIdCart,
-      quantity: quantity
+    let isExsits = cartArray.some((elem: any) => elem.product_id === productIdCart);
 
+    if (userData) {
+      let dataToAddInCart = {
+        product_id: productIdCart,
+        quantity: quantity,
+        user_id: userData.uuid,
+        price: productPrice,
+      };
+      if (!isExsits) {
+        dispatch("addToCart", dataToAddInCart);
+      } else {
+        dispatch("updateCart", dataToAddInCart)
+      }
+      notification(productName);
+    } else {
+      notificationError("Please login first");
     }
-    dispatch({ payload: "addToCart", data: dataAddToCart })
-    notification(productName)
-
-  }
-
+  };
   return (
     <div>
       <Toaster />
-      {item.map((item) => (
+      {item.map((item, index: number) => (
 
         <div>
-          <div className='flex sm:gap-x-4 md:gap-x-8'>
+          <div key={index} className='flex sm:gap-x-4 md:gap-x-8'>
 
             <div className='w-16 md:w-24'>
 
@@ -106,8 +125,7 @@ const ProductDetail: FC<{ item: Array<IProduct> }> = ({ item }) => {
                   Add to Cart
                 </button>
                 <p className="text-2xl font-semibold">${item.price}{".00"}</p>
-              </div>
-            </div>
+              </div>            </div>
 
 
 
@@ -155,39 +173,3 @@ const ProductDetail: FC<{ item: Array<IProduct> }> = ({ item }) => {
 
 export default ProductDetail
 
-{/* 
-  <div>
-            <div className="relative py-14 px-2 border-b border-gray-400">
-              <h2 className="top-0 absolute text-6xl md:text-[9rem] font-bold text-gray-200 text-center mx-auto -z-50 ">Overview</h2>
-              <p className="font-semibold text-xl">Product Information</p>
-
-            </div>
-
-
-
-            <div className="text-gray-600">
-              <div className="flex px-2 py-4">
-                <div className="w-80">
-                  <h3 className="font-semibold">PRODUCT DETAILS</h3>
-                </div>
-                <p>
-                  <PortableText content={item.description} />
-                </p>
-              </div>
-              <div className="flex px-2 py-8">
-                <div className="w-80">
-                  <h3 className="font-semibold">PRODUCT CARE</h3>
-                </div>
-                <ul className="pl-3 list-disc font-semibold text-gray-900">
-                  <li>Hand wash using cold water.</li>
-                  <li>Do not using bleach.</li>
-                  <li>Hang it to dry.</li>
-                  <li>Iron on low temperature.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="h-16" />
-          </div>
-
-
-*/}
