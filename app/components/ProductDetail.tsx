@@ -74,6 +74,7 @@ const ProductDetail: FC<{ item: Array<IProduct> }> = ({ item }) => {
       notificationError("Please login first");
     }
   };
+
   return (
     <div>
       <Toaster />

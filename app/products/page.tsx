@@ -21,10 +21,10 @@ const Products = async () => {
     let apiData = await fetchAllProductData()
     //console.log(apiData)
     return (
-        <div >
-            <AllProductsCompo ProductData={apiData} />
 
-        </div>
+        <AllProductsCompo ProductData={apiData} />
+
+
     )
 }
 

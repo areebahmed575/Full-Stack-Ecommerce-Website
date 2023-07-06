@@ -8,7 +8,7 @@ const CardAll: FC<{ singleProductData: IProduct }> = ({ singleProductData }) => 
     return (
         <div className='mx-auto w-[11rem] md:w-[16rem] space-y-3 duration-300'>
             <div className='relative w-full'>
-                <div className='absolute inset-0 z-10' />
+                <div className='absolute inset-0 z-10 max-h-[200px] object-cover object-top' />
                 <Image width={300} height={300} src={urlForImage(singleProductData.image).url()} alt="product" />
             </div>
             <div className='space-y-1 text-gray-600 font-semibold text-lg select-none'>

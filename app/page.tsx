@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Hero from './components/Hero'
 import ProductText from './components/ProductText'
-//import ProductCart from './components/ProductCart'
 import { client } from '@/lib/sanityClient';
-//import { oneProductType, responseType } from './components/ProductArrayType/Type';
 import { urlForImage } from '@/sanity/lib/image';
 import { Image as Iimage } from 'sanity';
 import Link from 'next/link';
@@ -11,7 +9,7 @@ import Jwellery from './components/Jwellery';
 import Card from './components/Card';
 import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
-//import Productapidata from './components/Productcomponent/Productapidata';
+
 
 async function fetchProduct() {
   const res = await client.fetch(`*[_type == "testing"]{
@@ -64,14 +62,14 @@ export default async function Home() {
 
   return (
     <div>
-      {/*    
+
 
       <Hero />
       <ProductText />
       <Card data={result} />
       <Jwellery />
       <Newsletter />
-      */}
+
 
 
 

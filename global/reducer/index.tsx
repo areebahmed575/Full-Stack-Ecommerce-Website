@@ -1,4 +1,3 @@
-
 function checkerAndReturner(orgnalData: any, newData: any) {
     for (let index = 0; index < orgnalData.length; index++) {
         const element = orgnalData[index];
