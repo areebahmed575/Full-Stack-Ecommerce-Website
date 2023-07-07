@@ -18,7 +18,7 @@ export default class AllProductsCompo extends Component<{ ProductData: propType 
         hasMore: true,
     }
     fetchDataFromApiGradually = async (start: number, end: number) => {
-        const res = await fetch(`${BASE_PATH_FORAPI}/api/products?start=${start}&end=${end}`);
+        const res = await fetch(`/api/products?start=${start}&end=${end}`);
         const dataToCheckAndSend = await res.json();
         if (dataToCheckAndSend.productArray === "Not found") {
             this.setState({ hasMore: false })

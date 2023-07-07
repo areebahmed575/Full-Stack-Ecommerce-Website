@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="sticky top-0 backdrop-blur bg-opacityDownColor bg-white z-50">
         <div className=' py-5 flex justify-between items-center space-x-12'>
           <div className='w-36 flex-shrink-0'>
-            <Image src={"/next.svg"} alt={"image"} width={500} height={500} />
+            <Image src={"/Logo.webp"} alt={"image"} width={500} height={500} />
           </div>
 
           <div className='hidden lg:flex justify-between items-center w-full '>
