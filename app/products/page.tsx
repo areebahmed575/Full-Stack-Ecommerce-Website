@@ -21,8 +21,12 @@ const Products = async () => {
     let apiData = await fetchAllProductData()
     //console.log(apiData)
     return (
+        <div>
+            {Array.isArray(apiData.productArray) &&
 
-        <AllProductsCompo ProductData={apiData} />
+                <AllProductsCompo ProductData={apiData} />
+            }
+        </div>
 
 
     )

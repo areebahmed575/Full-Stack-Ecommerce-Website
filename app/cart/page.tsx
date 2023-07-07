@@ -12,11 +12,8 @@ async function fatchAllStoreProducts() {
 };
 const page = async () => {
     let allProducts = await fatchAllStoreProducts();
-    console.log(allProducts)
+    //console.log(allProducts)
     return (
-
-
-
         <ContextWrapper>
             <CartComp allProductsOfStore={allProducts.result} />
         </ContextWrapper>
